@@ -17,16 +17,19 @@
 <body>
   <div style="width:auto;">
     <div class="top_square">
-      <b style="background-color: #b9d3f0; display:block; font-size:35px;">Arsenii</b>
-      <b class="top_text">professional (almost :-)) programmer</b>
+      <b style="background-color: #b9d3f0; display:block; font-size:35px;">Arsenii 15 y.o</b>
+      <b class="top_text">professional (almost :-) ) programmer</b>
       <b>Telegram: </b>
       <a href="https://t.me/ArseniiUA">@ArseniiUA</a>
-      <br/>
+      <br>
       <b>Instagram: </b>
       <a href="https://www.instagram.com/tym_arsenii/">Tym_Arsenii</a>
-      <br/>
+      <br>
       <b>Email: </b>
       <b>Tym.Arsenii@icloud.com</b>
+      <br>
+      <b style="color:#b9d3f0">Email: </b>
+      <b>Tym.Arsenii@gmail.com</b>
     </div>
 
     <div class="bottom_square">
