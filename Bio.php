@@ -17,7 +17,20 @@
 <body>
   <div style="width:auto;">
     <div class="top_square">
-      <b style="background-color: #b9d3f0; display:block; font-size:35px;">Arsenii 15 y.o</b>
+      <?php
+      function strtotime_to_years($timestamp) 
+      {
+        $current_time=time();
+        $difference_in_seconds=$current_time-$timestamp;
+        $seconds_in_a_year=60*60*24*365.25;
+        $years=$difference_in_seconds/$seconds_in_a_year;
+
+        return floor($years);
+      }
+      $date_of_birth='2008-09-06 00:00'; // 13:05
+      $result=strtotime_to_years(strtotime($date_of_birth));
+      ?>
+      <b style="background-color: #b9d3f0; display:block; font-size:35px;">Arsenii <?php echo $result; ?> y.o</b>
       <b class="top_text">professional (almost :-) ) programmer</b>
       <b>Telegram: </b>
       <a href="https://t.me/ArseniiUA">@ArseniiUA</a>
