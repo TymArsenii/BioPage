@@ -1,135 +1,141 @@
-<?php
-$minuend=0;
-while(true)
+<?
+if(isset($_POST['is_birthday']))
 {
-  $curr_date=strtotime(date('Y-m-d'));
-  $birthday_date_build=date('Y')-$minuend.'-09-06';
-
-  //echo $birthday_date_build . "\n";
-
-  $birthday_date=strtotime($birthday_date_build);
-  $diff_in_seconds=$curr_date - $birthday_date;
-  $diff_in_days=round($diff_in_seconds/(60*60*24));
-
-  if($diff_in_days>=0) break;
-  else $minuend=1;
+  if (date('d-m')==='06-09')
+  {
+    echo 'true';
+  }
+  else
+  {
+    echo 'false';
+  }
+  exit;
 }
+?>
 
-echo '
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="//www.w3.org/1999/xhtml">
 <head>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta charset="Shift_JIS">
-	<title>Birthday days ago</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>ArseniiUA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="keywords" content="">
+  <meta name="resource-type" content="Document">
+  <meta name="robots" content="ALL">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta name="theme-color" content="#a2deae">
+  <meta name="author" content="Arsenii Tymoshenko">
+
+  <!-- <link rel="Website Icon" type="svg"
+
+	href="AquaPilotLogo-with-grass.svg"> -->
 </head>
+
 <body>
 <canvas id="canvas-wrapping"></canvas>
-<input type="hidden" id="is_birthday" value="0">
-';
+  <div class="back" style="background-color:#a2deae;">
+    <a href="/">&nbsp; ←Menu</a>
+  </div>
+  <div style="margin-bottom:30px;"></div>
+  
 
-if($diff_in_days!=0)
-{
-  echo '<p style="font-size:35px;"> Birthday was '.$diff_in_days .' days ago </p>';
-}
-if($diff_in_days==0)
-{
-  echo '<p style="font-size:35px; color:red;"> Birthday today!</p>';
-  echo '<p style="font-size:25px; color:black;"> Prepare your gifts ;-)</p>';
-}
-else if($diff_in_days%10==0)
-{
-  echo '<p style="font-size:25px; color:red;"> Aninersary!</p>';
-}
+  <div style="padding-bottom:50px;"></div>
+  <div style="width:auto;">
+    <div class="top_square">
+      <?php
+      function strtotime_to_years($timestamp) 
+      {
+        $current_time=time();
+        $difference_in_seconds=$current_time-$timestamp;
+        $seconds_in_a_year=60*60*24*365.25;
+        $years=$difference_in_seconds/$seconds_in_a_year;
 
-echo '<div class="footer">
-      <a href="https://exch.com.ua/Bio.php" style="text-decoration:none; color:#007aff;">Arsenii’s Technologies</a>
-    </div>';
-    
-echo '
+        return floor($years);
+      }
+      $date_of_birth='2008-09-06 00:00'; // 13:05
+      $result=strtotime_to_years(strtotime($date_of_birth));
+      ?>
+      <b style="background-color:#b9d3f0; display:block; font-size:35px;">Arsenii <?php echo $result; ?> y.o</b>
+      <b class="top_text">Engineer, creator, professional (almost :-) ) software developer</b>
+      <b>Telegram:</b>
+      <a href="https://t.me/ArseniiUA">@ArseniiUA</a>
+      <br>
+      <b>Instagram:</b>
+      <a href="https://www.instagram.com/tym_arsenii/">Tym_Arsenii</a>
+      <br>
+      <b>Email:</b>
+      <b>Tym.Arsenii@icloud.com</b>
+      <br>
+      <b style="color:#b9d3f0">Email:</b>
+      <b>Tym.Arsenii@gmail.com</b>
+    </div>
+
+    <div class="bottom_square">
+      <b style="font-size:30px; color:#808080"; margin-bottom:5px;>Projects:</b>
+      <a href="https://github.com/tymarsenii">GitHub</a>
+      <div style="margin:10px;"></div>
+
+      <b class="bottom_text"><span style="color:#000;">AquaPilot — </span>Sprinklers controller</b> 
+      <b class="bottom_text"><span style="color:#000;">Game Console — </span>Tiny Game Console with several classic games</b>
+      <b class="bottom_text"><span style="color:#000;">BlindSystem — </span>Blind gear drive with AppleHome capability</b>
+      <b class="bottom_text"><span style="color:#000;">StripOS — </span>Powerful OS for addressable LED strips [updated]</b>
+      <b class="bottom_text"><span style="color:#000;">SolenoidEngine — </span>Single piston solenoid engine</b>
+      <b class="bottom_text"><span style="color:#000;">DigiSandClock — </span>Awesome digtal sand clock [updated]</b>
+      <b class="bottom_text"><span style="color:#000;">ChristmasDecoration — </span>Round PCB with 8x8 matrix and a bunch of effects (New!)</b>
+      <b style="display:flex; justify-content:end; color:#969595;">And others...</b>
+    </div>
+  </div>
+
+  <input type="hidden" id="is_birthday" value='0'>
 </body>
-<style>
-  body
-  {
-    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  }
 
-  #canvas-wrapping 
-  {
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    z-index:999;
-    pointer-events:none;
-  }
-
-  .footer 
-  {
-    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    font-size:1rem;
-    color:#6e6e73;
-    background:rgba(220, 220, 220, 0.7);
-    padding:5px 10px;
-    border-radius:10px;
-    box-shadow:0 2px 4px rgba(0, 0, 0, 0.1);
-    color:#007aff;
-  }
-</style>';
-
-echo '
 <script>
-document.addEventListener("DOMContentLoaded", () => 
+document.addEventListener('DOMContentLoaded', () => 
 {
-  let send_build="is_birthday";
+  let send_build='is_birthday';
   console.log(send_build);
 
-  var url="/Bio.php";
+  var url='/Bio.php';
 
   fetch(url, 
   {
-    method:"POST",
+    method:'POST',
     headers:
     {
-      "Content-Type":"application/x-www-form-urlencoded" //application/x-www-form-urlencoded
+      'Content-Type':'application/x-www-form-urlencoded' //application/x-www-form-urlencoded
     },
     body:new URLSearchParams(send_build)
   })
   .then(response => response.text())
   .then(text => 
   {
-    console.log("sent");
+    console.log('sent');
     console.log(text);
-    if(text=="true")
+    if(text=='true')
     {
-      console.log("Birthday!");
-      document.getElementById("is_birthday").value=1;
+      console.log('Birthday!');
+      document.getElementById('is_birthday').value=1;
       render_confetti();
 
       function set_width()
       {
-        if(document.getElementById("is_birthday").value=="1")
+        if(document.getElementById('is_birthday').value=='1')
         {
           render_confetti();
-          console.log("rerender");
+          console.log('rerender');
         }
       }
-      window.addEventListener("resize", set_width);
+      window.addEventListener('resize', set_width);
     }
     else
     {
-      console.log("Not birthday");
+      console.log('Not birthday');
     }
   })
   .catch(error => 
   {
-    console.error("Error:", error);
+    console.error('Error:', error);
   })
 });
 
@@ -139,12 +145,12 @@ function setup_canvas(id)
   const canvas=document.getElementById(id)
   canvas.width=window.innerWidth
   canvas.height=window.innerHeight
-  const ctx=canvas.getContext("2d")
+  const ctx=canvas.getContext('2d')
   return { canvas, ctx }
 }
 
-const colors=["#ff0", "#f0f", "#0ff", "#0f0", "#f00", "#00f"]
-const { canvas, ctx }=setup_canvas("canvas-wrapping"); 
+const colors=['#ff0', '#f0f', '#0ff', '#0f0', '#f00', '#00f']
+const { canvas, ctx }=setup_canvas('canvas-wrapping'); 
   function render_confetti() 
   {
     const timeDelta=0.05;
@@ -173,8 +179,8 @@ const { canvas, ctx }=setup_canvas("canvas-wrapping");
         ySpeed,
         radius,
         tilt,
-        color: colors[Math.floor(Math.random()*colors.length)],
-        phaseOffset: i, // Randomness from position in list
+        color:colors[Math.floor(Math.random()*colors.length)],
+        phaseOffset:i, // Randomness from position in list
       })
     }
 
@@ -203,8 +209,81 @@ const { canvas, ctx }=setup_canvas("canvas-wrapping");
     update();
   }
 
-  if(document.getElementById("is_birthday").value=="1") render_confetti();
+  if(document.getElementById('is_birthday').value=='1') render_confetti();
 </script>
-';
 
-?>
+<style>
+  @font-face
+  {
+    font-family:'SFProRegular';
+    src:url('SF-Pro-Text-Regular.woff') format('woff');
+  }
+
+  body
+  {
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    font-family:Arial, Helvetica, sans-serif;
+    background-color:#F8F4EE;
+  }
+
+  #canvas-wrapping 
+  {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:999;
+    pointer-events:none;
+  }
+
+
+  .back
+	{
+		background-color:#a2deae;
+		width:100%;
+		position:fixed;
+		z-index:4;
+		margin-bottom:10px;
+    top:0;
+    display:inline-block;
+	}
+
+  .top_text
+  {
+    display:block;
+    background-color:#b9d3f0;
+  }
+
+  .bottom_text
+  {
+    display:block;
+    background-color:#f3eebd;
+    color:#00589c;
+  }
+
+  .top_square
+  {
+    padding-left:10px;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-right:100px;
+    background-color:#b9d3f0; 
+    border-radius:8px 8px 0 0;
+  }
+
+  .bottom_square
+  {
+    padding-left:10px;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-right:80px;
+    background-color:#f3eebd;
+    display:block;
+    line-height:150%;
+    border-radius:0 0 8px 8px;
+  }
+</style>
+</html>
